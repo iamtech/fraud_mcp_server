@@ -215,4 +215,17 @@ public class FraudService {
         public long getHighRiskRecords() { return highRiskRecords; }
         public long getMediumRiskRecords() { return mediumRiskRecords; }
         public long getLowRiskRecords() { return lowRiskRecords; }
-        public long getUnverifiedRecords() { return unverifie
+        public long getUnverifiedRecords() { return unverifiedRecords; }
+        
+        @Override
+        public String toString() {
+            return "FraudStatistics{" +
+                    "totalRecords=" + totalRecords +
+                    ", highRiskRecords=" + highRiskRecords +
+                    ", mediumRiskRecords=" + mediumRiskRecords +
+                    ", lowRiskRecords=" + lowRiskRecords +
+                    ", unverifiedRecords=" + unverifiedRecords +
+                    '}';
+        }
+    }
+}
