@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: fraud-mcp-server
+  
+  # SQLite Database Configuration
+  datasource:
+    url: jdbc:sqlite:fraud_data.db
+    driver-class-name: org.sqlite.JDBC
+    
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  # Spring AI Configuration
+  ai:
+    bedrock:
+      claude:
+        chat:
+          enabled: true
+          model: anthropic.claude-3-5-sonnet-20241022-v2:0
+          options:
+            temperature: 0.7
+            max-tokens: 1000
+      aws:
+        access-key: ${AWS_ACCESS_KEY_ID:}
+        secret-key: ${AWS_SECRET_ACCESS_KEY:}
+        region: us-east-1
+
+# MCP Server Configuration
+mcp:
+  server:
+    port: 8080
+    name: fraud-detection-server
+    version: 1.0.0
+
+# Logging Configuration
+logging:
+  level:
+    com.example: DEBUG
+    org.springframework.ai: DEBUG
+    org.hibernate.SQL: DEBUG
